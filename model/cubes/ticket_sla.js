@@ -22,7 +22,7 @@ cube(`ticket_sla`, {
     
     breached: {
       sql: `breached`,
-      type: `string`
+      type: `boolean`
     },
     
     ticketid: {
@@ -37,7 +37,7 @@ cube(`ticket_sla`, {
     
     totaltime: {
       sql: `${CUBE}."totalTime"`,
-      type: `string`
+      type: `number`
     },
     
     createdat: {
@@ -48,12 +48,52 @@ cube(`ticket_sla`, {
     resolvedat: {
       sql: `${CUBE}."resolvedAt"`,
       type: `time`
+    },
+    
+    total_time: {
+      sql: `${CUBE}."totalTime"`,
+      type: `number`
+    },
+    
+    resolved_at: {
+      sql: `${CUBE}."resolvedAt"`,
+      type: `time`
     }
   },
   
   measures: {
     count: {
       type: `count`
+    },
+    
+    average_total_time: {
+      sql: `AVG(total_time)`,
+      type: `number`
+    },
+    
+    min_total_time: {
+      sql: `MIN(total_time)`,
+      type: `number`
+    },
+    
+    percentile_25: {
+      sql: `PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY total_time)`,
+      type: `number`
+    },
+    
+    percentile_50: {
+      sql: `PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY total_time)`,
+      type: `number`
+    },
+    
+    percentile_75: {
+      sql: `PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY total_time)`,
+      type: `number`
+    },
+    
+    max_total_time: {
+      sql: `MAX(total_time)`,
+      type: `number`
     }
   },
   

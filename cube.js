@@ -5,4 +5,34 @@
 // enabled for your account.  You are still allowed to require
 // @cubejs-backend/*-driver packages.
 
-module.exports = {};
+module.exports = {
+  queryRewrite: (query, { securityContext }) => {
+    // if (securityContext.companyIds) {
+    //   query.filters.push({
+    //     member: `${CUBE}.companyId`,
+    //     operator: "in",
+    //     values: securityContext.companyIds,
+    //   });
+    // }
+
+    // return query;
+
+    if (securityContext.companyIds) {
+      const cubeNames = [
+        ...(query.dimensions || []),
+        ...(query.measures || []),
+      ].map((e) => e.split(".")[0]);
+
+      cubeNames.forEach(cube => {
+        query.filters.push({
+          member: `${cube}.companyId`,
+          operator: 'in',
+          values: securityContext.companyIds,
+        });
+      })
+    }
+
+    return query;   
+  },
+};
+
