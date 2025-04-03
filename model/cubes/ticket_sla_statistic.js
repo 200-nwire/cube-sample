@@ -1,10 +1,15 @@
 cube(`ticket_sla_statistic`, {
   sql: `SELECT 
-          goals.goalType, 
-          sla.totalTime
-        FROM TicketSLA sla 
-        LEFT JOIN SLAGoals goals 
-        ON goals.id = sla.slaGoalId`,
+          goals."goalType" as "goaltype", 
+          sla."totalTime" as "totaltime",
+          t."createdAt" as "createdat",
+          t."companyId" as "companyid"
+        FROM public."TicketSLA" sla 
+        LEFT JOIN public."SLAGoals" goals 
+        ON goals."id" = sla."slaGoalId"
+        LEFT JOIN public."Ticket" t 
+        ON sla."ticketId" = t.id
+        `,
 
   measures: {
     average_total_time: {
@@ -41,6 +46,19 @@ cube(`ticket_sla_statistic`, {
     goalType: {
       sql: `goalType`,
       type: `string`
+    },
+    createdAt: {
+      sql: `createdAt`,
+      type: `time`
+    },
+    companyId: {
+      sql: `companyId`,
+      type: `string`
+    },
+    ticketId: {
+      sql: `ticketId`,
+      type: `string`,
+      primaryKey: true
     }
   }
 });
