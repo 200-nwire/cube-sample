@@ -7,16 +7,6 @@
 
 module.exports = {
   queryRewrite: (query, { securityContext }) => {
-    // if (securityContext.companyIds) {
-    //   query.filters.push({
-    //     member: `${CUBE}.companyId`,
-    //     operator: "in",
-    //     values: securityContext.companyIds,
-    //   });
-    // }
-
-    // return query;
-
     if (securityContext.companyIds) {
       const cubeNames = [
         ...(query.dimensions || []),

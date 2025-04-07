@@ -3,7 +3,9 @@ cube(`ticket_sla_statistic`, {
           goals."goalType" as "goaltype", 
           sla."totalTime" as "totaltime",
           t."createdAt" as "createdat",
-          t."companyId" as "companyid"
+          t."companyId" as "companyid",
+          sla."breached" as "breached",
+          goals."targetTime" as "targettime"      
         FROM public."TicketSLA" sla 
         LEFT JOIN public."SLAGoals" goals 
         ON goals."id" = sla."slaGoalId"
@@ -36,10 +38,19 @@ cube(`ticket_sla_statistic`, {
       sql: `PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY totalTime)`,
       type: `number`
     },
+    percentBreached: {
+      sql: `100.0 * ${countBreached} / NULLIF(${count}, 0)`,
+      type: 'number',
+      format: 'percent'
+    },
     count: {
       sql: `totalTime`,
       type: `count`
-    }
+    },
+    countBreached: {
+      sql: `CASE WHEN breached = true THEN 1 ELSE NULL END`,
+      type: `count`
+    },
   },
 
   dimensions: {
@@ -53,6 +64,14 @@ cube(`ticket_sla_statistic`, {
     },
     companyId: {
       sql: `companyId`,
+      type: `string`
+    },
+    breached: {
+      sql: `breached`,
+      type: `boolean`
+    },
+    targetTime: {
+      sql: `targetTime`,
       type: `string`
     },
     ticketId: {
