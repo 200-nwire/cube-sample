@@ -15,7 +15,7 @@ cube(`ticket_sla_statistic`, {
 
   measures: {
     average_total_time: {
-      sql: `totalTime`,
+      sql: `NULLIF(${CUBE}.totalTime, 0)`,
       type: `avg`
     },
     min_total_time: {
@@ -27,15 +27,15 @@ cube(`ticket_sla_statistic`, {
       type: `max`
     },
     percentile_25: {
-      sql: `PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY totalTime)`,
+      sql: `PERCENTILE_CONT(0.25) WITHIN GROUP (ORDER BY totalTime) FILTER (WHERE totalTime > 0)`,
       type: `number`
     },
     percentile_50: {
-      sql: `PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY totalTime)`,
+      sql: `PERCENTILE_CONT(0.50) WITHIN GROUP (ORDER BY totalTime) FILTER (WHERE totalTime > 0)`,
       type: `number`
     },
     percentile_75: {
-      sql: `PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY totalTime)`,
+      sql: `PERCENTILE_CONT(0.75) WITHIN GROUP (ORDER BY totalTime) FILTER (WHERE totalTime > 0)`,
       type: `number`
     },
     percentBreached: {
