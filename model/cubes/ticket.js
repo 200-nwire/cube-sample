@@ -86,15 +86,7 @@ cube(`ticket`, {
       sql: `${CUBE}."updatedAt"`,
       type: `time`
     },
-<<<<<<< HEAD
-=======
-
-    countSlaBreached: {
-      sql: `CASE WHEN ${CUBE}."slaBreached" = true THEN 1 ELSE NULL END`,
-      type: `number`
-    },
-
->>>>>>> upstream/master
+    
   },
   
   measures: {
