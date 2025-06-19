@@ -71,6 +71,11 @@ cube(`ticket`, {
       sql: `title`,
       type: `string`
     },
+
+    slaBreached: {
+      sql: `${CUBE}."slaBreached"`,
+      type: `boolean`
+    },
     
     createdAt: {
       sql: `${CUBE}."createdAt"`,
@@ -80,12 +85,20 @@ cube(`ticket`, {
     updatedAt: {
       sql: `${CUBE}."updatedAt"`,
       type: `time`
-    }
+    },
+    
   },
   
   measures: {
     count: {
       type: `count`
+    },
+
+    slaBreachedCount: {
+      type: `count`,
+      filters: [
+        { sql: `${CUBE}."slaBreached" = true` }
+      ]
     }
   },
   
