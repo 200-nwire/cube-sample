@@ -1,5 +1,5 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`workflow`, {
+  sql_table: `public."Workflow"`,
   
   joins: {
     
@@ -17,19 +17,24 @@ cube(`ticket_status`, {
       type: `string`
     },
     
-    color: {
-      sql: `color`,
-      type: `string`
-    },
-    
     description: {
       sql: `description`,
       type: `string`
     },
     
-    icon: {
-      sql: `icon`,
+    initialstatusid: {
+      sql: `${CUBE}."initialStatusId"`,
       type: `string`
+    },
+    
+    createdat: {
+      sql: `${CUBE}."createdAt"`,
+      type: `time`
+    },
+    
+    updatedat: {
+      sql: `${CUBE}."updatedAt"`,
+      type: `time`
     }
   },
   

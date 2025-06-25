@@ -3,12 +3,12 @@ cube(`sla_time_entries`, {
   
   joins: {
     ticket: {
-      sql: `${CUBE.ticketid} = ${ticket.id}`,
+      sql: `${CUBE}."ticketId" = ${ticket}.id`,
       relationship: `many_to_one`
     },
     
     sla_goals: {
-      sql: `${CUBE.slagoalid} = ${sla_goals.id}`,
+      sql: `${CUBE}."slaGoalId" = ${sla_goals}.id`,
       relationship: `many_to_one`
     }
   },
@@ -20,11 +20,6 @@ cube(`sla_time_entries`, {
       primary_key: true
     },
     
-    previouspassedseconds: {
-      sql: `${CUBE}."previousPassedSeconds"`,
-      type: `number`
-    },
-    
     ticketid: {
       sql: `${CUBE}."ticketId"`,
       type: `string`
@@ -32,11 +27,6 @@ cube(`sla_time_entries`, {
     
     slagoalid: {
       sql: `${CUBE}."slaGoalId"`,
-      type: `string`
-    },
-    
-    assignedtoid: {
-      sql: `${CUBE}."assignedToId"`,
       type: `string`
     },
     
@@ -52,16 +42,6 @@ cube(`sla_time_entries`, {
     
     endedat: {
       sql: `${CUBE}."endedAt"`,
-      type: `time`
-    },
-    
-    pausescheduledat: {
-      sql: `${CUBE}."pauseScheduledAt"`,
-      type: `time`
-    },
-    
-    startscheduledat: {
-      sql: `${CUBE}."startScheduledAt"`,
       type: `time`
     }
   },

@@ -1,5 +1,5 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`calendar`, {
+  sql_table: `public."Calendar"`,
   
   joins: {
     
@@ -17,8 +17,8 @@ cube(`ticket_status`, {
       type: `string`
     },
     
-    color: {
-      sql: `color`,
+    rrule: {
+      sql: `rrule`,
       type: `string`
     },
     
@@ -27,8 +27,13 @@ cube(`ticket_status`, {
       type: `string`
     },
     
-    icon: {
-      sql: `icon`,
+    endtime: {
+      sql: `${CUBE}."endTime"`,
+      type: `string`
+    },
+    
+    starttime: {
+      sql: `${CUBE}."startTime"`,
       type: `string`
     }
   },

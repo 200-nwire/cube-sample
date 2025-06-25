@@ -1,5 +1,5 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`file`, {
+  sql_table: `public."File"`,
   
   joins: {
     
@@ -12,38 +12,43 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
+    size: {
+      sql: `size`,
+      type: `number`
+    },
+    
+    filename: {
+      sql: `${CUBE}."fileName"`,
       type: `string`
     },
     
-    toall: {
-      sql: `${CUBE}."toAll"`,
-      type: `boolean`
-    },
-    
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    s3key: {
+      sql: `${CUBE}."s3Key"`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    mimetype: {
+      sql: `mimetype`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
+    createdby: {
+      sql: `${CUBE}."createdBy"`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
+    type: {
+      sql: `type`,
       type: `string`
     },
     
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    relationid: {
+      sql: `${CUBE}."relationId"`,
+      type: `string`
+    },
+    
+    relationtype: {
+      sql: `${CUBE}."relationType"`,
       type: `string`
     },
     

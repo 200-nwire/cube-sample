@@ -2,7 +2,15 @@ cube(`sla_goals`, {
   sql_table: `public."SLAGoals"`,
   
   joins: {
+    calendar: {
+      sql: `${CUBE.calendarid} = ${calendar.id}`,
+      relationship: `many_to_one`
+    },
     
+    sla: {
+      sql: `${CUBE.slaid} = ${sla.id}`,
+      relationship: `many_to_one`
+    }
   },
   
   dimensions: {
@@ -12,8 +20,18 @@ cube(`sla_goals`, {
       primary_key: true
     },
     
-    workhours: {
-      sql: `${CUBE}."workHours"`,
+    filters: {
+      sql: `filters`,
+      type: `string`
+    },
+    
+    metadata: {
+      sql: `metadata`,
+      type: `string`
+    },
+    
+    calendarid: {
+      sql: `${CUBE}."calendarId"`,
       type: `string`
     },
     
@@ -34,21 +52,6 @@ cube(`sla_goals`, {
     
     targettime: {
       sql: `${CUBE}."targetTime"`,
-      type: `string`
-    },
-    
-    priorityid: {
-      sql: `${CUBE}."priorityId"`,
-      type: `string`
-    },
-    
-    categoryid: {
-      sql: `${CUBE}."categoryId"`,
-      type: `string`
-    },
-    
-    typeid: {
-      sql: `${CUBE}."typeId"`,
       type: `string`
     },
     

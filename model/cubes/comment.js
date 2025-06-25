@@ -3,7 +3,7 @@ cube(`comment`, {
   
   joins: {
     ticket: {
-      sql: `${CUBE}."ticketId" = ${ticket}.id`,
+      sql: `${CUBE.ticketid} = ${ticket.id}`,
       relationship: `many_to_one`
     }
   },
@@ -17,7 +17,7 @@ cube(`comment`, {
     
     isprivate: {
       sql: `${CUBE}."isPrivate"`,
-      type: `string`
+      type: `boolean`
     },
     
     ticketid: {

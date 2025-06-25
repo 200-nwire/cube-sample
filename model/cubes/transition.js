@@ -1,8 +1,11 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`transition`, {
+  sql_table: `public."Transition"`,
   
   joins: {
-    
+    workflow: {
+      sql: `${CUBE.workflowid} = ${workflow.id}`,
+      relationship: `many_to_one`
+    }
   },
   
   dimensions: {
@@ -12,23 +15,33 @@ cube(`ticket_status`, {
       primary_key: true
     },
     
+    workflowid: {
+      sql: `${CUBE}."workflowId"`,
+      type: `string`
+    },
+    
+    guard: {
+      sql: `guard`,
+      type: `string`
+    },
+    
+    actions: {
+      sql: `actions`,
+      type: `string`
+    },
+    
     name: {
       sql: `name`,
       type: `string`
     },
     
-    color: {
-      sql: `color`,
+    fromstatusid: {
+      sql: `${CUBE}."fromStatusId"`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
+    tostatusid: {
+      sql: `${CUBE}."toStatusId"`,
       type: `string`
     }
   },

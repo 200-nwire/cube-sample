@@ -1,5 +1,5 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`automation_rule`, {
+  sql_table: `public."AutomationRule"`,
   
   joins: {
     
@@ -12,28 +12,28 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
-      type: `string`
-    },
-    
-    toall: {
-      sql: `${CUBE}."toAll"`,
+    enabled: {
+      sql: `enabled`,
       type: `boolean`
     },
     
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    conditions: {
+      sql: `conditions`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    action: {
+      sql: `action`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
+    metadata: {
+      sql: `metadata`,
+      type: `string`
+    },
+    
+    name: {
+      sql: `name`,
       type: `string`
     },
     
@@ -42,8 +42,8 @@ cube(`queue`, {
       type: `string`
     },
     
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    trigger: {
+      sql: `trigger`,
       type: `string`
     },
     

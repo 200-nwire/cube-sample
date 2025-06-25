@@ -2,14 +2,9 @@ cube(`ticket_type`, {
   sql_table: `public."TicketType"`,
   
   joins: {
-    ticket: {
-      sql: `${CUBE}.id = ${ticket}."typeId"`,
-      relationship: `one_to_many`
-    },
-    
-    sla_goals: {
-      sql: `${CUBE}.id = ${sla_goals}."typeId"`,
-      relationship: `one_to_many`
+    workflow: {
+      sql: `${CUBE.workflowid} = ${workflow.id}`,
+      relationship: `many_to_one`
     }
   },
   
@@ -22,6 +17,31 @@ cube(`ticket_type`, {
     
     name: {
       sql: `name`,
+      type: `string`
+    },
+    
+    defaultteamid: {
+      sql: `${CUBE}."defaultTeamId"`,
+      type: `string`
+    },
+    
+    workflowid: {
+      sql: `${CUBE}."workflowId"`,
+      type: `string`
+    },
+    
+    color: {
+      sql: `color`,
+      type: `string`
+    },
+    
+    icon: {
+      sql: `icon`,
+      type: `string`
+    },
+    
+    description: {
+      sql: `description`,
       type: `string`
     }
   },

@@ -1,5 +1,5 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`organization`, {
+  sql_table: `public."Organization"`,
   
   joins: {
     
@@ -12,28 +12,38 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
-      type: `string`
-    },
-    
-    toall: {
-      sql: `${CUBE}."toAll"`,
+    enabled: {
+      sql: `enabled`,
       type: `boolean`
     },
     
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    phone: {
+      sql: `phone`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    prefix: {
+      sql: `prefix`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
+    address: {
+      sql: `address`,
+      type: `string`
+    },
+    
+    domains: {
+      sql: `domains`,
+      type: `string`
+    },
+    
+    maincontactid: {
+      sql: `${CUBE}."mainContactId"`,
+      type: `string`
+    },
+    
+    darklogourl: {
+      sql: `${CUBE}."darkLogoUrl"`,
       type: `string`
     },
     
@@ -42,8 +52,13 @@ cube(`queue`, {
       type: `string`
     },
     
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    logourl: {
+      sql: `${CUBE}."logoUrl"`,
+      type: `string`
+    },
+    
+    name: {
+      sql: `name`,
       type: `string`
     },
     

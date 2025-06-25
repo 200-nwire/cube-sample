@@ -1,8 +1,16 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`sla`, {
+  sql_table: `public."SLA"`,
   
   joins: {
+    ticket: {
+      sql: `${CUBE}.id = ${ticket}."slaId"`,
+      relationship: `one_to_many`
+    },
     
+    sla_goals: {
+      sql: `${CUBE}.id = ${sla_goals}."slaId"`,
+      relationship: `one_to_many`
+    }
   },
   
   dimensions: {
@@ -12,13 +20,13 @@ cube(`ticket_status`, {
       primary_key: true
     },
     
-    name: {
-      sql: `name`,
+    active: {
+      sql: `active`,
       type: `string`
     },
     
-    color: {
-      sql: `color`,
+    name: {
+      sql: `name`,
       type: `string`
     },
     
@@ -27,9 +35,19 @@ cube(`ticket_status`, {
       type: `string`
     },
     
-    icon: {
-      sql: `icon`,
+    companyids: {
+      sql: `${CUBE}."companyIds"`,
       type: `string`
+    },
+    
+    createdat: {
+      sql: `${CUBE}."createdAt"`,
+      type: `time`
+    },
+    
+    updatedat: {
+      sql: `${CUBE}."updatedAt"`,
+      type: `time`
     }
   },
   

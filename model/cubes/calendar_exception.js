@@ -1,8 +1,11 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`calendar_exception`, {
+  sql_table: `public."CalendarException"`,
   
   joins: {
-    
+    calendar: {
+      sql: `${CUBE.calendarid} = ${calendar.id}`,
+      relationship: `many_to_one`
+    }
   },
   
   dimensions: {
@@ -12,24 +15,19 @@ cube(`ticket_status`, {
       primary_key: true
     },
     
-    name: {
-      sql: `name`,
+    calendarid: {
+      sql: `${CUBE}."calendarId"`,
       type: `string`
     },
     
-    color: {
-      sql: `color`,
+    note: {
+      sql: `note`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
-      type: `string`
+    date: {
+      sql: `date`,
+      type: `time`
     }
   },
   
