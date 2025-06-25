@@ -1,34 +1,28 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`ticket_counter`, {
+  sql_table: `public."TicketCounter"`,
   
   joins: {
     
   },
   
   dimensions: {
-    id: {
-      sql: `id`,
-      type: `string`,
-      primary_key: true
+    lastnumber: {
+      sql: `${CUBE}."lastNumber"`,
+      type: `number`
     },
     
-    name: {
-      sql: `name`,
+    companyid: {
+      sql: `${CUBE}."companyId"`,
       type: `string`
     },
     
-    color: {
-      sql: `color`,
+    prefix: {
+      sql: `prefix`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
+    domains: {
+      sql: `domains`,
       type: `string`
     }
   },

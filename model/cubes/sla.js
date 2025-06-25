@@ -2,15 +2,7 @@ cube(`sla`, {
   sql_table: `public."SLA"`,
   
   joins: {
-    ticket: {
-      sql: `${CUBE}.id = ${ticket}."slaId"`,
-      relationship: `one_to_many`
-    },
     
-    sla_goals: {
-      sql: `${CUBE}.id = ${sla_goals}."slaId"`,
-      relationship: `one_to_many`
-    }
   },
   
   dimensions: {
@@ -22,7 +14,7 @@ cube(`sla`, {
     
     active: {
       sql: `active`,
-      type: `string`
+      type: `boolean`
     },
     
     name: {

@@ -1,5 +1,5 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`event_history`, {
+  sql_table: `public."EventHistory"`,
   
   joins: {
     
@@ -12,48 +12,43 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
+    changes: {
+      sql: `changes`,
       type: `string`
     },
     
-    toall: {
-      sql: `${CUBE}."toAll"`,
-      type: `boolean`
-    },
-    
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    data: {
+      sql: `data`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    action: {
+      sql: `action`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
+    eventtype: {
+      sql: `${CUBE}."eventType"`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
+    entitytype: {
+      sql: `${CUBE}."entityType"`,
       type: `string`
     },
     
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    entityid: {
+      sql: `${CUBE}."entityId"`,
+      type: `string`
+    },
+    
+    createdby: {
+      sql: `${CUBE}."createdBy"`,
       type: `string`
     },
     
     createdat: {
       sql: `${CUBE}."createdAt"`,
-      type: `time`
-    },
-    
-    updatedat: {
-      sql: `${CUBE}."updatedAt"`,
       type: `time`
     }
   },

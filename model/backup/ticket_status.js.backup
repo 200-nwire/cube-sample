@@ -2,7 +2,10 @@ cube(`ticket_status`, {
   sql_table: `public."TicketStatus"`,
   
   joins: {
-    
+    ticket: {
+      sql: `${CUBE}.id = ${ticket}."statusId"`,
+      relationship: `many_to_one`
+    }
   },
   
   dimensions: {
@@ -14,21 +17,6 @@ cube(`ticket_status`, {
     
     name: {
       sql: `name`,
-      type: `string`
-    },
-    
-    color: {
-      sql: `color`,
-      type: `string`
-    },
-    
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
       type: `string`
     }
   },

@@ -1,8 +1,16 @@
-cube(`ticket_status`, {
-  sql_table: `public."TicketStatus"`,
+cube(`ticket_category`, {
+  sql_table: `public."TicketCategory"`,
   
   joins: {
+    ticket: {
+      sql: `${CUBE}.id = ${ticket}."categoryId"`,
+      relationship: `one_to_many`
+    },
     
+    sla_goals: {
+      sql: `${CUBE}.id = ${sla_goals}."categoryId"`,
+      relationship: `one_to_many`
+    }
   },
   
   dimensions: {
@@ -14,21 +22,6 @@ cube(`ticket_status`, {
     
     name: {
       sql: `name`,
-      type: `string`
-    },
-    
-    color: {
-      sql: `color`,
-      type: `string`
-    },
-    
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    icon: {
-      sql: `icon`,
       type: `string`
     }
   },

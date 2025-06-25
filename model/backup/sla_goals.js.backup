@@ -1,5 +1,5 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`sla_goals`, {
+  sql_table: `public."SLAGoals"`,
   
   joins: {
     
@@ -12,38 +12,43 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
+    workhours: {
+      sql: `${CUBE}."workHours"`,
       type: `string`
     },
     
-    toall: {
-      sql: `${CUBE}."toAll"`,
-      type: `boolean`
-    },
-    
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    slaid: {
+      sql: `${CUBE}."slaId"`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    name: {
+      sql: `name`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
+    goaltype: {
+      sql: `${CUBE}."goalType"`,
       type: `string`
     },
     
-    description: {
-      sql: `description`,
+    targettime: {
+      sql: `${CUBE}."targetTime"`,
       type: `string`
     },
     
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    priorityid: {
+      sql: `${CUBE}."priorityId"`,
+      type: `string`
+    },
+    
+    categoryid: {
+      sql: `${CUBE}."categoryId"`,
+      type: `string`
+    },
+    
+    typeid: {
+      sql: `${CUBE}."typeId"`,
       type: `string`
     },
     

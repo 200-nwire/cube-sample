@@ -1,8 +1,11 @@
-cube(`queue`, {
-  sql_table: `public."Queue"`,
+cube(`comment`, {
+  sql_table: `public."Comment"`,
   
   joins: {
-    
+    ticket: {
+      sql: `${CUBE}."ticketId" = ${ticket}.id`,
+      relationship: `many_to_one`
+    }
   },
   
   dimensions: {
@@ -12,38 +15,23 @@ cube(`queue`, {
       primary_key: true
     },
     
-    filters: {
-      sql: `filters`,
+    isprivate: {
+      sql: `${CUBE}."isPrivate"`,
       type: `string`
     },
     
-    toall: {
-      sql: `${CUBE}."toAll"`,
-      type: `boolean`
-    },
-    
-    teamids: {
-      sql: `${CUBE}."teamIds"`,
+    ticketid: {
+      sql: `${CUBE}."ticketId"`,
       type: `string`
     },
     
-    title: {
-      sql: `title`,
+    content: {
+      sql: `content`,
       type: `string`
     },
     
-    slug: {
-      sql: `slug`,
-      type: `string`
-    },
-    
-    description: {
-      sql: `description`,
-      type: `string`
-    },
-    
-    userids: {
-      sql: `${CUBE}."userIds"`,
+    createdbyid: {
+      sql: `${CUBE}."createdById"`,
       type: `string`
     },
     
@@ -54,6 +42,11 @@ cube(`queue`, {
     
     updatedat: {
       sql: `${CUBE}."updatedAt"`,
+      type: `time`
+    },
+    
+    deletedat: {
+      sql: `${CUBE}."deletedAt"`,
       type: `time`
     }
   },

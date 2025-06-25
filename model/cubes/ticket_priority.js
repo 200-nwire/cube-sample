@@ -2,15 +2,7 @@ cube(`ticket_priority`, {
   sql_table: `public."TicketPriority"`,
   
   joins: {
-    ticket: {
-      sql: `${CUBE}.id = ${ticket}."priorityId"`,
-      relationship: `many_to_one`
-    },
     
-    sla_goals: {
-      sql: `${CUBE}.id = ${sla_goals}."priorityId"`,
-      relationship: `many_to_one`
-    }
   },
   
   dimensions: {
@@ -22,6 +14,21 @@ cube(`ticket_priority`, {
     
     name: {
       sql: `name`,
+      type: `string`
+    },
+    
+    color: {
+      sql: `color`,
+      type: `string`
+    },
+    
+    description: {
+      sql: `description`,
+      type: `string`
+    },
+    
+    icon: {
+      sql: `icon`,
       type: `string`
     }
   },
