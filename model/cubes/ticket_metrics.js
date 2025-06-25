@@ -9,7 +9,10 @@ cube(`ticket_metricks`, {
           ticket."companyId" as "companyid",
           ticket."slaBreached" as "slabreached",
           ticket."holdReason" as "holdreason",
+<<<<<<< HEAD
           ticket."customerId" as "customerid",
+=======
+>>>>>>> upstream/master
           tc.name as "categoryname",
           tsc.name as "subcategoryname",
           tp."name" as "ticketpriorityname",
@@ -55,10 +58,13 @@ cube(`ticket_metricks`, {
       sql: `assignedtoTeamid`,
       type: `string`
     },
+<<<<<<< HEAD
     customerid: {
       sql: `customerid`,
       type: `string`
     },
+=======
+>>>>>>> upstream/master
     companyid: {
       sql: `companyid`,
       type: `string`
