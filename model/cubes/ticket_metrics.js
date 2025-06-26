@@ -91,7 +91,7 @@ cube(`ticket_metricks`, {
       sql: `ticketeamname`,
       type: `string`
     },
-    orgname: {
+    companyname: {
       sql: `companyname`,
       type: `string`
     },

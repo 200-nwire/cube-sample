@@ -5,7 +5,8 @@ cube(`ticket_sla_statistic`, {
           t."createdAt" as "createdat",
           t."companyId" as "companyid",
           sla."breached" as "breached",
-          goals."targetTime" as "targettime"      
+          goals."targetTime" as "targettime",
+          t."assignedToId" as "assignedtoid"      
         FROM public."TicketSLA" sla 
         LEFT JOIN public."SLAGoals" goals 
         ON goals."id" = sla."slaGoalId"
@@ -78,6 +79,10 @@ cube(`ticket_sla_statistic`, {
       sql: `ticketId`,
       type: `string`,
       primaryKey: true
-    }
+    },
+    assignedToId: {
+      sql: `assignedToId`,
+      type: `string`
+    },
   }
 });
