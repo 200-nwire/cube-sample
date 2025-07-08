@@ -55,7 +55,7 @@ cube(`ticket_sla_statistic`, {
   },
 
   dimensions: {
-    goaltype: {
+    goalType: {
       sql: `goalType`,
       type: `string`
     },
