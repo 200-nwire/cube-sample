@@ -15,7 +15,7 @@ cube(`ticket`, {
       primary_key: true
     },
     
-    slabreached: {
+    slaBreached: {
       sql: `${CUBE}."slaBreached"`,
       type: `boolean`
     },
@@ -25,12 +25,12 @@ cube(`ticket`, {
       type: `string`
     },
     
-    sourcedata: {
+    sourceData: {
       sql: `${CUBE}."sourceData"`,
       type: `string`
     },
     
-    ticketnumber: {
+    ticketNumber: {
       sql: `${CUBE}."ticketNumber"`,
       type: `string`
     },
@@ -45,67 +45,67 @@ cube(`ticket`, {
       type: `string`
     },
     
-    statusid: {
+    statusId: {
       sql: `${CUBE}."statusId"`,
       type: `string`
     },
     
-    typeid: {
+    typeId: {
       sql: `${CUBE}."typeId"`,
       type: `string`
     },
     
-    categoryid: {
+    categoryId: {
       sql: `${CUBE}."categoryId"`,
       type: `string`
     },
     
-    subcategoryid: {
+    subCategoryId: {
       sql: `${CUBE}."subCategoryId"`,
       type: `string`
     },
     
-    priorityid: {
+    priorityId: {
       sql: `${CUBE}."priorityId"`,
       type: `string`
     },
     
-    assignedtoid: {
+    assignedToId: {
       sql: `${CUBE}."assignedToId"`,
       type: `string`
     },
     
-    assignedtoteamid: {
+    assignedToTeamId: {
       sql: `${CUBE}."assignedToTeamId"`,
       type: `string`
     },
     
-    customerid: {
+    customerId: {
       sql: `${CUBE}."customerId"`,
       type: `string`
     },
     
-    companyid: {
+    companyId: {
       sql: `${CUBE}."companyId"`,
       type: `string`
     },
     
-    slaid: {
+    slaId: {
       sql: `${CUBE}."slaId"`,
       type: `string`
     },
     
-    holdreason: {
+    holdReason: {
       sql: `${CUBE}."holdReason"`,
       type: `string`
     },
     
-    createdat: {
+    createdAt: {
       sql: `${CUBE}."createdAt"`,
       type: `time`
     },
     
-    updatedat: {
+    updatedAt: {
       sql: `${CUBE}."updatedAt"`,
       type: `time`
     }

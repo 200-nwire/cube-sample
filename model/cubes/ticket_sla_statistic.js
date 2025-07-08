@@ -55,15 +55,15 @@ cube(`ticket_sla_statistic`, {
   },
 
   dimensions: {
-    goaltype: {
+    goalType: {
       sql: `goalType`,
       type: `string`
     },
-    createdat: {
+    createdAt: {
       sql: `createdAt`,
       type: `time`
     },
-    companyid: {
+    companyId: {
       sql: `companyId`,
       type: `string`
     },
@@ -71,16 +71,16 @@ cube(`ticket_sla_statistic`, {
       sql: `breached`,
       type: `boolean`
     },
-    targettime: {
+    targetTime: {
       sql: `targetTime`,
       type: `string`
     },
-    ticketid: {
+    ticketId: {
       sql: `ticketId`,
       type: `string`,
       primaryKey: true
     },
-    assignedtoid: {
+    assignedToId: {
       sql: `assignedToId`,
       type: `string`
     },

@@ -27,71 +27,71 @@ cube(`ticket_metricks`, {
         `,
 
   dimensions: {
-    statusid: {
+    statusId: {
       sql: `statusid`,
       type: `string`
     },
-    statusname: {
+    statusName: {
       sql: `ticketstatusname`,
       type: `string`
     },
-    ticketid: {
+    ticketId: {
       sql: `ticketid`,
       type: `string`
     },
-        categoryid: {
+    categoryId: {
       sql: `categoryid`,
       type: `string`
     },
-    subcategoryid: {
+    subCategoryId: {
       sql: `subcategoryid`,
       type: `string`
     },
-    assignedtoid: {
+    assignedToId: {
       sql: `assignedtoid`,
       type: `string`
     },
-    assignedtoteamid: {
+    assignedToTeamId: {
       sql: `assignedtoTeamid`,
       type: `string`
     },
-    customerid: {
+    customerId: {
       sql: `customerid`,
       type: `string`
     },
-    companyid: {
+    companyId: {
       sql: `companyid`,
       type: `string`
     },
-    slabreached: {
+    slaBreached: {
       sql: `slabreached`,
       type: `boolean`
     },
-    holdreason: {
+    holdReason: {
       sql: `holdreason`,
       type: `string`
     },
-    createdat: {
+    createdAt: {
       sql: `createdat`,
       type: `time`
     },
-    categoryname: {
+    categoryName: {
       sql: `categoryname`,
       type: `string`
     },
-    subcategoryname: {
+    subCategoryName: {
       sql: `subcategoryname`,
       type: `string`
     },
-    ticketpriorityname: {
+    ticketPriorityName: {
       sql: `ticketpriorityname`,
       type: `string`
     },
-    ticketeamname: {
+    tickeTeamName: {
       sql: `ticketeamname`,
       type: `string`
     },
-    companyname: {
+    companyName: {
       sql: `companyname`,
       type: `string`
     },
