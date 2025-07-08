@@ -116,7 +116,7 @@ cube(`ticket_metricks`, {
     statusCount: {
       type: `count`,
       filters: [
-        { sql: `${CUBE.statusid} = ${CUBE.statusid}` }
+        { sql: `${CUBE.statusId} = ${CUBE.statusId}` }
       ]    
     },
 
