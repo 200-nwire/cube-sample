@@ -123,7 +123,7 @@ cube(`ticket_metricks`, {
     categoryCount: {
       type: `count`,
       filters: [
-        { sql: `${CUBE.categoryid} = ${CUBE.categoryid}` }
+        { sql: `${CUBE.categoryId} = ${CUBE.categoryId}` }
       ]
     },
 
