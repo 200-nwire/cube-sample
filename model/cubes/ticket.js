@@ -12,7 +12,8 @@ cube(`ticket`, {
     id: {
       sql: `id`,
       type: `string`,
-      primary_key: true
+      primary_key: true,
+      shown: true
     },
     
     slaBreached: {
