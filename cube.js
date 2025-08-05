@@ -22,7 +22,7 @@ module.exports = {
         });
         query.filters.push({
           member: `${cube}.companyId`,
-          operator: 'notIn',
+          operator: 'notEquals',
           values: excludedCompanyIds,
         });
       })
