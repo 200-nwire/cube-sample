@@ -4,6 +4,7 @@
 // CubeCloud users by default.  Please contact support if you need them
 // enabled for your account.  You are still allowed to require
 // @cubejs-backend/*-driver packages.
+const excludedCompanyIds = ["bcn00kc2q66j", "h1wgedy43j4e"];
 
 module.exports = {
   queryRewrite: (query, { securityContext }) => {
@@ -18,6 +19,11 @@ module.exports = {
           member: `${cube}.companyId`,
           operator: 'in',
           values: securityContext.companyIds,
+        });
+        query.filters.push({
+          member: `${cube}.companyId`,
+          operator: 'notIn',
+          values: excludedCompanyIds,
         });
       })
     }
