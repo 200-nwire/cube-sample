@@ -5,7 +5,8 @@
 // enabled for your account.  You are still allowed to require
 // @cubejs-backend/*-driver packages.
 
-const excludedCompanyIds = ["bcn00kc2q66j", "h1wgedy43j4e"];
+// Add companies id to excludedCompanyIds to remove from all insight dataset
+const excludedCompanyIds = [];
 
 module.exports = {
   queryRewrite: (query, { securityContext }) => {
@@ -24,6 +25,8 @@ module.exports = {
       });
     }
 
+if (excludedCompanyIds.length > 0)
+{
     cubeNames.forEach(cube => {
       query.filters.push({
         member: `${cube}.companyId`,
@@ -31,7 +34,7 @@ module.exports = {
         values: excludedCompanyIds,
       });
     });
-
+  }
     return query;
   },
 };
