@@ -1,34 +1,38 @@
-// Cube configuration options: https://cube.dev/docs/config
-
-// NOTE: third-party dependencies and the use of require(...) are disabled for
-// CubeCloud users by default.  Please contact support if you need them
-// enabled for your account.  You are still allowed to require
-// @cubejs-backend/*-driver packages.
-const excludedCompanyIds = ["bcn00kc2q66j", "h1wgedy43j4e"];
 
 module.exports = {
   queryRewrite: (query, { securityContext }) => {
-    if (securityContext.companyIds) {
-      const cubeNames = [
-        ...(query.dimensions || []),
-        ...(query.measures || []),
-      ].map((e) => e.split(".")[0]);
+    const cubeNames = [
+      ...(query.dimensions || []),
+      ...(query.measures || []),
+    ].map((e) => e.split(".")[0]);
+// @ts-ignore
+    console.log("CUBES utilisés :", cubeNames);
+    // @ts-ignore
+    console.log("SECURITY CONTEXT :", securityContext);
 
+    if (securityContext.companyIds) {
       cubeNames.forEach(cube => {
         query.filters.push({
           member: `${cube}.companyId`,
-          operator: 'in',
+          operator: 'equals',
           values: securityContext.companyIds,
         });
-        query.filters.push({
-          member: `${cube}.companyId`,
-          operator: 'notEquals',
-          values: excludedCompanyIds,
-        });
-      })
+      });
     }
 
-    return query;   
+const excludedCompanyIds = ["bcn00kc2q66j", "h1wgedy43j4e"];
+
+
+    cubeNames.forEach(cube => {
+      query.filters.push({
+        member: `${cube}.companyId`,
+        operator: 'notEquals',
+        values: excludedCompanyIds,
+      });
+    });
+// @ts-ignore
+    console.log("FILTRES FINAUX :", JSON.stringify(query.filters, null, 2));
+
+    return query;
   },
 };
-
