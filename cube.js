@@ -6,7 +6,7 @@
 // @cubejs-backend/*-driver packages.
 
 // Add companies id to excludedCompanyIds to remove from all insight dataset
-const excludedCompanyIds = [];
+const excludedCompanyIds = ["t44r5er3sccz", "xyy37bafbvgj"];
 
 module.exports = {
   queryRewrite: (query, { securityContext }) => {
